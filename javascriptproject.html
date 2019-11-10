@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Little Project on javascript </title>
+    <style type="text/css">
+      #shape{
+        height: 200px;
+        width:  150px;
+        background-color:orange;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 style="background-color:#333300"><b><u><center style="color:white">Test Your Reaction!</center></u></b></h1>
+    <p><b>click on the boxes and circles as quickly you can@</b></p>
+    <p>Your Time:<span id="Timetaken"></span></p>
+    <div id="shape"></div>
+    <script type="text/javascript">
+       var start=new Date().getTime();
+
+       function getRandomColor() {
+          var letters = '0123456789ABCDEF'.split('');
+          var color = '#';
+          for (var i = 0; i < 6; i++) {
+         color += letters[Math.floor(Math.random() * 16)];
+      }
+       return color;
+     }
+       function makeShape(){
+         var top=Math.random()*400;
+         var left=Math.random()*400;
+         var width =Math.random()*300;
+         if(Math.random()>0.5)
+         {
+           document.getElementById("shape").style.borderRadius="50%";
+         }
+         document.getElementById("shape").style.backgroundColor=getRandomColor();
+         document.getElementById("shape").style.top=top+"px";
+         document.getElementById("shape").style.left=left+"px";
+         document.getElementById("shape").style.width=width+"px";
+         document.getElementById("shape").style.height=width+"px";
+         document.getElementById("shape").display="block";
+         var start=new Date().getTime();
+       }
+       function afterdelay(){
+        setTimeout(makeShape,Math.random()*1000);
+       }
+       afterdelay();
+       document.getElementById("shape").onclick=function () {
+         document.getElementById("shape").style.display="none";
+         var end=new Date().getTime();
+         var Timetaken=(end-start)/1000;
+         document.getElementById("Timetaken").innerHTML=Timetaken+"s";
+       }
+    </script>
+  </body>
+</html>
