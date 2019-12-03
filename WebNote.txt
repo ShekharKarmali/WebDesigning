@@ -1,0 +1,34 @@
+In php file,HTML content should be outside the block of php
+php.ini is file for error detecting
+
+print_r() is used to print array in php.
+
+Get Variable:-
+more than one variable is assign with &
+ex-?name="ashish"&roll="34567" in url
+
+
+Single quate print as it is in (variable)php while double quate print 
+the value of its variable.
+It has various function to like strlen etc.
+It is important to declare attribute name in form making in 
+order to access data through php.
+
+Database command:
+to show:show databases;
+to use database: use dbname;
+to check status:status;
+to show table: describe tablename;
+to select table: select * from Tablename;
+to insert into table: INSERT INTO 'tablename'<'field1','field2','field3',...>
+values<'value1','value2',......>;
+to create table: create table tablename
+                 <field datatype<size>,...>;
+to update: update tablename
+           set column_name=new value
+           [,column_name=new value,....]
+           Where condition;
+to delete: Deleting all row from the table
+
+           Delecting selected row
+           
