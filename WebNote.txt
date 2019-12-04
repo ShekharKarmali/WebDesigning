@@ -16,19 +16,62 @@ order to access data through php.
 
 Database command:
 to show:show databases;
+to create databse:create database dbname
 to use database: use dbname;
-to check status:status;
+to check status:status;  
+to show tables:show table
 to show table: describe tablename;
 to select table: select * from Tablename;
-to insert into table: INSERT INTO 'tablename'<'field1','field2','field3',...>
-values<'value1','value2',......>;
+to insert into table: insert into tablename(field1,field2,field3,...)
+values(value1,'value2(if string)',......);
 to create table: create table tablename
-                 <field datatype<size>,...>;
+                 (field datatype(size),...);
+to delete table: drop table tablename
 to update: update tablename
            set column_name=new value
            [,column_name=new value,....]
            Where condition;
-to delete: Deleting all row from the table
+to delete data from table: Deleting all row from the table
 
            Delecting selected row
+to select:-
+selected coloumn,all row:select coloumn from tablename
+all coloumn,selected row:select * from tablename where condition
+selected coloumn,selected rows:select coloumn from tablename where condition;
+**During insert field and their corressponding value must be there.
+to make changes into table :alter table tablename
+                            then command for changes
+Data constrain:
+               1>NOT NULL(EX:modify id int(50) NOT NULL;
+               2>UNIQUE constraint means value cannot be repeat except NULL
+                 DIFF between unique and primary is primary cannot accept NULL
+                 while unique can.One primary key per table constraint is possible 
+                 except combining two coloumn.
+                 add UNIQUE(tablename)
+               3>Primary Key
+                 No Duplicate
+                 No NULL value posible
+                 Syntax=Field PRIMARY kEY or PRIMARY KEY(field)
+                or ALTER table tablename PRIMARY KEY(Field)
+               4>Foreign Key
+                 When there is one to many relation and Many to Many relation(create another mix table)
+                 FOREIGN KEY in one table points to a PRIMARY KEY in another table
+               5>DEFAULT KEY
+                 TO set default value:Syntax
+                 alter field SET DEFAULT 'value' OR
+                 field datatype DEFAULT 'value'(During creating Table)
+               6>Check Constraint
+                 It is used to define range
+                 Syntax:
+                 At time of creating table use CHECK(condition) or
+                 after table creation:ADD CHECK(condition)
+AUTO_INCREMENT :It is used to generate unique id for new row
+                It add one value to last value and increment its value
+                Syntax:coloumn_name auto_increament.
+TO Create User: create user 'username'@'localhost/servername' identified by 'password';
+To Access other user databases: GRANT ALL PRIVILEGES ON database_name.*(to all table)/table_name TO 'username'@'localhost'
+                                ##Here instead of ALL we can specify particular PRIVILAGES lke
+                                  select_privi
+                                  insert_privi
+                                  update_privi
            
