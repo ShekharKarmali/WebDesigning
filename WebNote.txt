@@ -56,6 +56,9 @@ Data constrain:
                4>Foreign Key
                  When there is one to many relation and Many to Many relation(create another mix table)
                  FOREIGN KEY in one table points to a PRIMARY KEY in another table
+                 alter table tablename
+                 ADD FOREIGN KEY(coloumn name)
+                 REFERENCE tablename(coloumn name)
                5>DEFAULT KEY
                  TO set default value:Syntax
                  alter field SET DEFAULT 'value' OR
@@ -74,4 +77,9 @@ To Access other user databases: GRANT ALL PRIVILEGES ON database_name.*(to all t
                                   select_privi
                                   insert_privi
                                   update_privi
-           
+               or GRANT ALL PRIVILEGES ON *.*  TO 'username'@'localhost';
+To delete user: DROP USER username@localhost;
+To delete table data: DELETE FROM tablename WHERE field
+To delete all data from table:DELETE FROM tablename
+
+Without Selection of Database,we cannot do operation of database;
