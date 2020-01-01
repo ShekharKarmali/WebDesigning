@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+{%block title%}About{%endblock %}
+{%block body%}
+
+<form class="container" action="/shop/Contact/" method="POST">{% csrf_token %}
+    <h1>Contact Us</h1>
+
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name" name="name" placeholder="Your Good Name!">
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="user123@gmail.com">
+      </div>
+
+      <div class="form-group">
+        <label for="phone">Phone No.</label>
+        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+914567044649">
+      </div>
+
+    <div class="form-group">
+      <label for="desc">How may we help you!</label>
+      <textarea class="form-control" id="desc" rows="6" name="desc" placeholder="We glad to help you"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+
+
+
+{%endblock %}

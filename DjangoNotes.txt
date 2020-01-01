@@ -1,3 +1,19 @@
 challange-text fiel view in web
           button with pipeline
-          
+django-admin
+app in django mean plugable web application.
+
+to load text use:
+  {% load static %}
+ <a href="{% static 'file/filename.extention'%}">click me!</a> 
+
+from .models import dbname
+admin.site.register(dbname)
+
+def __str__(Self)
+    return self.class_name
+
+install/uninstall pillow?
+
+to print all model on website.(task)
+never forget about param variable in django.

@@ -1,0 +1,1 @@
+This is my first static test in django python.
