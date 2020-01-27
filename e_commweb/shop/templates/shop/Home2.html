@@ -37,11 +37,11 @@
            bottom:auto;
           }
 
-          .carousel-control-prev,
+          <!--.carousel-control-prev,
           .carousel-control-next{
            top:auto;
            bottom:auto;
-          }
+          }-->
 
            body .no-padding{
            padding-left: 0,
@@ -77,7 +77,7 @@
                          <span id="divpr{{ptoduct.0.id}}" class="divpr">
                             <button id="pr{{product.0.id}}" class="btn btn-primary cart">Add To Cart</button>
                         </span>
-                         <a href="/shop/productview/{{product.0.id}}" <button id="qv{{product.0.id}}" class="btn btn-info cart"> Quick View</button> </a>
+                         <a href="/shop/productview/{{product.0.id}}"><button id="qv{{product.0.id}}" class="btn btn-info cart"> Quick View</button> </a>
                      </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                  <span id="divpr{{i.id}}" class="divpr">
                     <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
                 </span>
-                 <a href="/shop/productview/{{i.id}}" <button id="qv{{i.id}}" class="btn btn-info cart"> Quick View</button> </a>
+                 <a href="/shop/productview/{{i.id}}"><button id="qv{{i.id}}" class="btn btn-info cart"> Quick View</button> </a>
              </div>
             </div>
         </div>
@@ -115,8 +115,9 @@
         <span class="carousel-control-next-icon"></span>
     </a>
    {% endfor %}
-    {% endblock %}
 </div>
+    {% endblock %}
+
 
 {% block js %}
 
@@ -129,6 +130,7 @@
   else{
       cart=JSON.parse(localStorage.getItem('cart'));
       document.getElementById('cart').innerHTML=Object.keys(cart).length;
+      Updatecart(cart);
   }
 
   //if the add to cart button is clicked.add/increament the item
@@ -143,22 +145,38 @@
           cart[idstr]=1;
       }
       Updatecart(cart);
-      localStorage.setItem('cart',JSON.stringify(cart));
-      document.getElementById('cart').innerHTML=Object.keys(cart).length;
   });
 
-  //PopOver to show no. of cart
+  //add popover to car
   $('#popcart').popover();
-  document.getElementById("popcart").setAttribute('data-content','<h5>cart for your items</h5>');
+  document.getElementById("popcart").setAttribute('data-content','<h5>cart for your item in my shoping cart</h5>');
+
 
   function Updatecart(cart) {
-    for(var  item in cart){
+      for (var item in cart) {
+         document.getElementById('div'+ item).innerHTML="<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>" + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+      }
+      localStorage.setItem('cart',JSON.stringfy(cart));
+      document.getElementById('cart').innerHTML = Object.keys(cart).length;
       console.log(cart);
-      //document.getElementById('div'+k).innerHTML="<button id='minus " +k+ " ' class='btn btn-primary minus'>-</button>
-      //span id=' val "+k+" ''> " + cart[item] + " </span> <button id='plus"+k+"'class='btn btn-primary plus'> +  </button>";
-     document.getElementById('div' + item).innerHTML = "<button id='minus" + item + "' class='btn btn-primary minus'>-</button> <span id='val" + item + "''>"
-       + cart[item] + "</span> <button id='plus" + item + "' class='btn btn-primary plus'> + </button>";
+
     }
-  }
+
+    //If plus or inus button is clicked ,change the cart as well as display
+    $('.divpr').on("click","button.minus",function(){
+      console.log("minus clicked");
+      a=this.id.slice(7,);
+      cart['pr' + a] = cart['pr' + a] - 1;
+      cart['pr' + a]=Math.max(0,cart['pr' + a]);
+      document.getElementById('valpr'+ a).innerHTML = cart['pr' + a];
+      Updatecart(cart);
+    });
+    $('.divpr').on("click","button.plus",function(){
+      console.log("plus clicked");
+      a=this.id.slice(6,);
+      cart['pr'+a]=cart['pr'+a]+1;
+      document.getElementById('valpr'+ a).innerHTML = cart['pr'+a];
+      Updatecart(cart);
+    });
 </script>
 {% endblock %}
